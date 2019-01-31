@@ -30,6 +30,78 @@ public class EmpresaAlquiler {
     private int totalAlquileres;
     private VehiculoAlquilado[] alquileres;
 
+    public String getCif() {
+        return cif;
+    }
+
+    public void setCif(String cif) {
+        this.cif = cif;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPaginaWeb() {
+        return paginaWeb;
+    }
+
+    public void setPaginaWeb(String paginaWeb) {
+        this.paginaWeb = paginaWeb;
+    }
+
+    public int getTotalClientes() {
+        return totalClientes;
+    }
+
+    public void setTotalClientes(int totalClientes) {
+        this.totalClientes = totalClientes;
+    }
+
+    public Cliente[] getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(Cliente[] clientes) {
+        this.clientes = clientes;
+    }
+
+    public int getTotalVehiculos() {
+        return totalVehiculos;
+    }
+
+    public void setTotalVehiculos(int totalVehiculos) {
+        this.totalVehiculos = totalVehiculos;
+    }
+
+    public Vehiculo[] getVehiculos() {
+        return vehiculos;
+    }
+
+    public void setVehiculos(Vehiculo[] vehiculos) {
+        this.vehiculos = vehiculos;
+    }
+
+    public int getTotalAlquileres() {
+        return totalAlquileres;
+    }
+
+    public void setTotalAlquileres(int totalAlquileres) {
+        this.totalAlquileres = totalAlquileres;
+    }
+
+    public VehiculoAlquilado[] getAlquileres() {
+        return alquileres;
+    }
+
+    public void setAlquileres(VehiculoAlquilado[] alquileres) {
+        this.alquileres = alquileres;
+    }
+
     // se omiten los métodos ‘get’ y ‘set’ de la clase
     /* Constructor parametrizado donde se establece que el total de clientes
     será 50, igual que el total de vehiculos disponibles. El histórico de
@@ -89,6 +161,35 @@ public class EmpresaAlquiler {
             System.out.println(vehiculos[i].toString());
         }
     }
-    
+
+    /*alquilarVehiculo(String matricula,String nif,int dias). Modifica
+    la disponibilidad del vehículo para indicar que está alquilado y añade un objeto
+    de tipo VehiculoAlquilado al array de vehículos alquilados. Para
+    registrar el alquiler de un vehículo por un cliente se usa estel método. El
+    método getCliente(String nif) busca la referencia del cliente con el NIF
+    dado en el array clientes. De forma similar, el método getVehiculo(String
+    matricula) busca la referencia del vehículo con la matrícula dada en el
+    array vehiculos. Una vez encontrado el vehículo con la matrícula indicada,
+    se verifica si está disponible para alquilar y se modifica su
+    disponibilidad. A continuación, almacena un objeto de tipo
+    VehiculoAlquilado en el array alquileres.Este objeto relaciona un
+    cliente, un vehículo, la fecha actual y los días de alquiler.*/
+    private Cliente getCliente(String nif) {
+        for (int i = 0; i < this.getTotalClientes(); i++) {
+            if (this.clientes[i].getNif().equals(nif)) {
+                return this.clientes[i];
+            }
+        }
+        return null;
+    }
+
+    private Vehiculo getVehiculo(String matricula) {
+        for (int i = 0; i < this.totalVehiculos; i++) {
+            if (this.vehiculos[i].getMatricula().equals(matricula)) {
+                return this.vehiculos[i];
+            }
+        }
+        return null;
+    }
 
 }
