@@ -28,7 +28,7 @@ public class EmpresaAlquiler {
     alquileres realizados y array de almacenamiento para los objetos
     8 VehiculoAlquilado */
     private int totalAlquileres;
-    private VehiculoAlquiler[] alquileres;
+    private VehiculoAlquilado[] alquileres;
 
     // se omiten los métodos ‘get’ y ‘set’ de la clase
 /* Constructor parametrizado donde se establece que el total de clientes
@@ -46,7 +46,7 @@ vehiculos puede contener hasta 100 elementos */
         this.vehiculos = new Vehiculo[50]; // apuntan a null
         // Incialmente no hay histórico de alquileres en la empresa
         this.totalAlquileres = 0;
-        this.alquileres = new VehiculoAlquiler[100]; // apuntan a null
+        this.alquileres = new VehiculoAlquilado[100]; // apuntan a null
 
     }
 
