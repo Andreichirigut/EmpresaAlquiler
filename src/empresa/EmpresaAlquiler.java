@@ -5,6 +5,10 @@
  */
 package empresa;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
+
 /**
  *
  * @author andrei
@@ -192,4 +196,34 @@ public class EmpresaAlquiler {
         return null;
     }
 
+    public void alquilarVehiculo(String matricula, String nif, int dias) {
+        Cliente cliente = getCliente(nif);
+        Vehiculo vehiculo = getVehiculo(matricula);
+        // busca el cliente con el NIF dado en el array
+        // clientes y el vehículo con la matrícula dada en el
+        // array vehiculos, si el vehículo está disponible se
+        // alquila con la fecha actual, que se obtiene
+        // ejecutando los métodos diaHoy(), mesHoy() y
+        // añoHoy(), cuya declaración no se incluye
+        if (vehiculo.isDisponible()) {
+            vehiculo.setDisponible(false);
+            this.alquileres[this.totalAlquileres]
+                    = new VehiculoAlquilado(cliente, vehiculo,
+                            diaHoy(), mesHoy(), añoHoy(), dias);
+
+            this.totalAlquileres++;
+        }
+    }
+
+    public static int diaHoy() {
+        return LocalDate.now().getDayOfMonth();
+    }
+    
+    public static Month mesHoy(){
+        return LocalDate.now().getMonth();
+    }
+    
+    public static int añoHoy(){
+        return LocalDate.now().getYear();
+    }
 }
