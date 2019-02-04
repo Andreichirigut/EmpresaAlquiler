@@ -65,6 +65,20 @@ public class Vehiculo {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+
+    public Vehiculo(String matricula, String marca, String modelo, String color, double tarifa, boolean disponible) {
+        this.matricula = matricula;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.color = color;
+        this.tarifa = tarifa;
+        this.disponible = disponible;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehiculo{" + "matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", tarifa=" + tarifa + ", disponible=" + disponible + '}';
+    }
     
     
 }

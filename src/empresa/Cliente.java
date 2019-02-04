@@ -38,6 +38,17 @@ public class Cliente {
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
+
+    public Cliente(String nif, String nombre, String apellidos) {
+        this.nif = nif;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "nif=" + nif + ", nombre=" + nombre + ", apellidos=" + apellidos + '}';
+    }
     
     
 }

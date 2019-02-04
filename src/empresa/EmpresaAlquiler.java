@@ -218,12 +218,29 @@ public class EmpresaAlquiler {
     public static int diaHoy() {
         return LocalDate.now().getDayOfMonth();
     }
-    
-    public static Month mesHoy(){
+
+    public static Month mesHoy() {
         return LocalDate.now().getMonth();
     }
-    
-    public static int añoHoy(){
+
+    public static int añoHoy() {
         return LocalDate.now().getYear();
     }
+
+    public void recibirVehiculo(String matricula) {
+// busca el vehículo con la matrícula dada en el
+// array vehiculos y modifica su disponibilidad
+// para que se pueda alquilar de nuevo
+        Vehiculo vehiculo = getVehiculo(matricula);
+        if (vehiculo != null) {
+            vehiculo.setDisponible(true);
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "EmpresaAlquiler{" + "cif=" + cif + ", nombre=" + nombre + ", paginaWeb=" + paginaWeb + ", totalClientes=" + totalClientes + ", clientes=" + clientes + ", totalVehiculos=" + totalVehiculos + ", vehiculos=" + vehiculos + ", totalAlquileres=" + totalAlquileres + ", alquileres=" + alquileres + '}';
+    }
+    
 }
