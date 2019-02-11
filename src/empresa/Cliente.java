@@ -5,6 +5,8 @@
  */
 package empresa;
 
+import java.util.Random;
+
 /**
  *
  * @author andrei
@@ -39,6 +41,10 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
+    public Cliente(){
+        
+    }
+    
     public Cliente(String nif, String nombre, String apellidos) {
         this.nif = nif;
         this.nombre = nombre;
@@ -47,8 +53,27 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return  nif + " " + apellidos+ " " + nombre ;
+        return nif + " " + apellidos + " " + nombre;
+    }
+
+    public void clienteAleatorio() {
+        Random aleatorio = new Random();
+        String[] nif = {"12345567X", "123424357O", "321454687Y", "3452154Q", "23457986P"};
+        String[] nombre = {"Esteban", "Jose", "Antonio", "Alvaro", "Daniel"};
+        String[] apellido = {"Lopez", "Sánchez", "Roman", "Rodriguez", "Ramirez"};
+        
+        String nifSelecionada = nif[aleatorio.nextInt(nif.length)];
+        System.out.println(nifSelecionada);
+        
+        String nombreSelecionada = nombre[aleatorio.nextInt(nombre.length)];
+        System.out.println(nombreSelecionada);
+        
+        String apellidoSelecionada = apellido[aleatorio.nextInt(apellido.length)];
+        System.out.println(apellidoSelecionada);
     }
     
-    
+    public static void main(String[] args) {
+        Cliente c1 = new Cliente();
+        c1.clienteAleatorio();
+    }
 }
