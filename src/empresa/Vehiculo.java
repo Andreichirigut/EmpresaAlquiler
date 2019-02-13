@@ -86,38 +86,76 @@ public class Vehiculo {
         return matricula + " " + marca + " " + modelo + " " + color + " " + tarifa + " " + disponible;
     }
 
-    public void vehiculoAleatorio() {
-        Random aleatorio = new Random();
-        String[] matricula = {"123R", "456T", "789V", "23456RU", "32556PI"};
-        String[] marca = {"Seat", "audi", "bmw", "mercedes", "pegout"};
-        String[] modelo = {"badman", "A1", "X7X", "B101", "Leon"};
-        String[] color = {"rojo", "blanco", "amarillo", "azul", "negro"};
-        Double[] tarifa = {1.7, 5.5, 24.3, 2.5, 9.9};
-        Boolean[] disponible = {true, false};
+    public static Vehiculo vehiculoAleatorio() {
+        String Matricula = "";
 
+        Random rnd = new Random();
 
-        String matriculaSelecionada = matricula[aleatorio.nextInt(matricula.length)];
-        System.out.println(matriculaSelecionada);
-        
-        String marcaSelecionada = marca[aleatorio.nextInt(marca.length)];
-        System.out.println(marcaSelecionada);
-        
-        String modeloSelecionada = modelo[aleatorio.nextInt(modelo.length)];
-        System.out.println(modeloSelecionada);
-        
-        String colorSelecionada = color[aleatorio.nextInt(color.length)];
-        System.out.println(colorSelecionada);
-        
-        Double tarifaSelecionada = tarifa[aleatorio.nextInt(tarifa.length)];
-        System.out.println(tarifaSelecionada);
+        for (int i = 0; i < 7; i++) {
 
-        Boolean disponibleSelecionada = disponible[aleatorio.nextInt(disponible.length)];
-        System.out.println(disponibleSelecionada);
+            if (i < 4) {
+
+                Matricula += rnd.nextInt(10);
+            } else {
+
+                Matricula += (char) (rnd.nextInt(90 - 65 + 1) + 65);
+            }
+        }
+        String Color = "";
+
+        int numeroColor = rnd.nextInt(9);
+
+        switch (numeroColor) {
+            case 0:
+                Color = "Blanco";
+                break;
+            case 1:
+                Color = "Negro";
+                break;
+            case 2:
+                Color = "Azul";
+                break;
+            case 3:
+                Color = "Amarrillo";
+                break;
+            case 4:
+                Color = "Morado";
+                break;
+            case 5:
+                Color = "Naranja";
+                break;
+            case 6:
+                Color = "Verde";
+                break;
+            case 7:
+                Color = "Rojo";
+                break;
+            case 8:
+                Color = "Cian";
+                break;
+        }
+        double Tarifa;
+
+        Tarifa = rnd.nextInt(150 - 100 + 1) + 100;
+        boolean disponibilidad;
+
+        if (rnd.nextBoolean()) {
+            disponibilidad = true;
+        } else {
+            disponibilidad = false;
+        }
+        String[] marca = {"Lexus", "Ferrari", "Maserrati", "Ford", "Renault", "Seat", "Fiat"};
+        String[] modelo = {"Marbella", "Pianto", "RSX300", "Focus", "Clio", "Marbella"};
+
+        String marcaElegido = marca[rnd.nextInt(marca.length)];
+        String modeloElegido = modelo[rnd.nextInt(modelo.length)];
+
+        Vehiculo v = new Vehiculo(Matricula, marcaElegido, modeloElegido, Color, Tarifa, disponibilidad);
+        return v;
 
     }
 
     public static void main(String[] args) {
-        Vehiculo v1 = new Vehiculo();
-        v1.vehiculoAleatorio();
+        Vehiculo.vehiculoAleatorio();
     }
 }

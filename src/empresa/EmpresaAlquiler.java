@@ -242,5 +242,19 @@ public class EmpresaAlquiler {
     public String toString() {
         return "EmpresaAlquiler{" + "cif=" + cif + ", nombre=" + nombre + ", paginaWeb=" + paginaWeb + ", totalClientes=" + totalClientes + ", clientes=" + clientes + ", totalVehiculos=" + totalVehiculos + ", vehiculos=" + vehiculos + ", totalAlquileres=" + totalAlquileres + ", alquileres=" + alquileres + '}';
     }
-    
+
+    public void rellenarCLientes() {
+        int clientesExistentes = this.totalClientes;
+        for (int i = 0; i < this.clientes.length - clientesExistentes; i++) {
+            registrarCliente(Cliente.clienteAleatorio());
+        }
+    }
+
+    public void rellenarVehiculos() {
+        int vehiculosExistentes = this.totalVehiculos;
+        for (int i = 0; i < this.vehiculos.length - vehiculosExistentes; i++) {
+            registrarVehiculo(Vehiculo.vehiculoAleatorio());
+        }
+    }
+
 }

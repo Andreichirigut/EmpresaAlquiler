@@ -41,10 +41,10 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
-    public Cliente(){
-        
+    public Cliente() {
+
     }
-    
+
     public Cliente(String nif, String nombre, String apellidos) {
         this.nif = nif;
         this.nombre = nombre;
@@ -56,24 +56,108 @@ public class Cliente {
         return nif + " " + apellidos + " " + nombre;
     }
 
-    public void clienteAleatorio() {
-        Random aleatorio = new Random();
-        String[] nif = {"12345567X", "123424357O", "321454687Y", "3452154Q", "23457986P"};
-        String[] nombre = {"Esteban", "Jose", "Antonio", "Alvaro", "Daniel"};
-        String[] apellido = {"Lopez", "Sánchez", "Roman", "Rodriguez", "Ramirez"};
-        
-        String nifSelecionada = nif[aleatorio.nextInt(nif.length)];
-        System.out.println(nifSelecionada);
-        
-        String nombreSelecionada = nombre[aleatorio.nextInt(nombre.length)];
-        System.out.println(nombreSelecionada);
-        
-        String apellidoSelecionada = apellido[aleatorio.nextInt(apellido.length)];
-        System.out.println(apellidoSelecionada);
+    public static Cliente clienteAleatorio() {
+        Random rnd = new Random();
+
+        String nombre[] = {"Pepe", "Ricardo", "Yoli", "Eduardo", "Manolo", "Felipe"};
+        String apellido[] = {"Sanchez", "Lopez", "Zubarte", "Payano", "Leon", "Montes"};
+
+        String nifrandom = "";
+        int dni[] = new int[8];
+        for (int i = 0; i <= dni.length - 1; i++) {
+            dni[i] = rnd.nextInt(10);
+
+        }
+        String letra = "";
+        int i = 0;
+        for (int value : dni) {
+            letra += String.valueOf(value);
+        }
+        int calculoLetra = Integer.parseInt(letra);
+        int c = calculoLetra % 23;
+        switch (c) {
+            case 0:
+                letra += "T";
+                break;
+            case 1:
+                letra += "R";
+                break;
+            case 2:
+                letra += "W";
+                break;
+            case 3:
+                letra += "A";
+                break;
+            case 4:
+                letra += "G";
+                break;
+            case 5:
+                letra += "M";
+                break;
+            case 6:
+                letra += "Y";
+                break;
+            case 7:
+                letra += "F";
+                break;
+            case 8:
+                letra += "P";
+                break;
+            case 9:
+                letra += "D";
+                break;
+            case 10:
+                letra += "X";
+                break;
+            case 11:
+                letra += "B";
+                break;
+            case 12:
+                letra += "N";
+                break;
+            case 13:
+                letra += "J";
+                break;
+            case 14:
+                letra += "Z";
+                break;
+            case 15:
+                letra += "S";
+                break;
+            case 16:
+                letra += "Q";
+                break;
+            case 17:
+                letra += "V";
+                break;
+            case 18:
+                letra += "H";
+                break;
+            case 19:
+                letra += "L";
+                break;
+            case 20:
+                letra += "C";
+                break;
+            case 21:
+                letra += "K";
+                break;
+            case 22:
+                letra += "E";
+                break;
+
+        }
+
+        String nombreElegido = nombre[rnd.nextInt(nombre.length)];
+        System.out.println("Nombre: " + nombreElegido);
+        String apellidoElegido = apellido[rnd.nextInt(apellido.length)];
+        System.out.println("Apellido: " + apellidoElegido);
+        System.out.println("Nif :" + letra);
+        Cliente cliente = new Cliente(letra, nombreElegido, apellidoElegido);
+        return cliente;
     }
-    
+
     public static void main(String[] args) {
-        Cliente c1 = new Cliente();
-        c1.clienteAleatorio();
+        Cliente.clienteAleatorio();
     }
 }
