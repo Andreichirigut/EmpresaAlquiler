@@ -257,38 +257,79 @@ public class EmpresaAlquiler {
         }
     }
 
-    public static Cliente[] ordenarCliente(Cliente[] cliente) {
+    public Cliente[] ordenarCliente() {
         Cliente tmp;
-        for (int i = 0; i < cliente.length - 1; i++) {
-            for (int j = i + 1; j < cliente.length; j++) {
-                if (cliente[i].getNif().compareTo(cliente[j].getNif()) > 0) {
-                    tmp = cliente[i];
-                    cliente[i] = cliente[j];
-                    cliente[j] = tmp;
+        for (int i = 0; i < clientes.length - 1; i++) {
+            for (int j = i + 1; j < clientes.length; j++) {
+                if (clientes[i].getNif().compareTo(clientes[j].getNif()) > 0) {
+                    tmp = clientes[i];
+                    clientes[i] = clientes[j];
+                    clientes[j] = tmp;
                 }
             }
         }
-        
-        return cliente;
+
+        return clientes;
 
     }
 
-    public static Vehiculo[] ordenarVehiculos(Vehiculo[] Vehiculo) {
+    public Vehiculo[] ordenarVehiculos() {
         Vehiculo tmp;
-        for (int i = 0; i < Vehiculo.length - 1; i++) {
-            for (int j = i + 1; j < Vehiculo.length; j++) {
-                if (Vehiculo[i].getMatricula().compareTo(Vehiculo[j].getMatricula()) > 0) {
-                    tmp = Vehiculo[i];
-                    Vehiculo[i] = Vehiculo[j];
-                    Vehiculo[j] = tmp;
+        for (int i = 0; i < vehiculos.length - 1; i++) {
+            for (int j = i + 1; j < vehiculos.length; j++) {
+                if (vehiculos[i].getMatricula().compareTo(vehiculos[j].getMatricula()) > 0) {
+                    tmp = vehiculos[i];
+                    vehiculos[i] = vehiculos[j];
+                    vehiculos[j] = tmp;
                 }
             }
         }
-        return Vehiculo;
-    }
-    
-    public int buscarCliente(){
-        
+        return vehiculos;
     }
 
+    public int buscarCliente(String buscado) {
+        int mitad;
+        int izquierda = 0;
+        int derecha = clientes.length - 1;
+        boolean encontrado = false;
+        while ((izquierda <= derecha) && (!encontrado)) {
+            mitad = (izquierda + derecha) / 2;
+            if (clientes[mitad].getNif().compareTo(buscado) == 0) {
+                encontrado = true;
+                System.out.println("Lo ha encontrado en la posicion: " + mitad);
+                return mitad;
+            } else if (clientes[mitad].getNif().compareTo(buscado) > 0) {
+                derecha = mitad - 1;
+            } //buscar en el trozo izquierdo
+            else if (clientes[mitad].getNif().compareTo(buscado) < 0) {
+                izquierda = mitad + 1; // buscar en el trozo derecho
+            }
+
+        }
+        return -1;
+
+    }
+
+    public int buscarVehiculo(String buscado) {
+        int mitad;
+        int izquierda = 0;
+        int derecha = vehiculos.length - 1;
+        boolean encontrado = false;
+        while ((izquierda <= derecha) && (!encontrado)) {
+            mitad = (izquierda + derecha) / 2;
+            if (vehiculos[mitad].getMatricula().compareTo(buscado) == 0) {
+                encontrado = true;
+                System.out.println("Lo ha encontrado en la posicion: " + mitad);
+                return mitad;
+            } else if (vehiculos[mitad].getMatricula().compareTo(buscado) > 0) {
+                derecha = mitad - 1;
+            } //buscar en el trozo izquierdo
+            else if (vehiculos[mitad].getMatricula().compareTo(buscado) < 0) {
+                izquierda = mitad + 1; // buscar en el trozo derecho
+            }
+
+        }
+        return -1;
+
+    }
 }
