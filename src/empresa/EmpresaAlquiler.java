@@ -257,4 +257,31 @@ public class EmpresaAlquiler {
         }
     }
 
+    public void ordenarCliente(Cliente[] cliente) {
+        Cliente tmp;
+        for (int i = 0; i < cliente.length - 1; i++) {
+            for (int j = i + 1; j < cliente.length; j++) {
+                if (cliente[i].getNif.compareTo(cliente[j].getNif())) {
+                    tmp = cliente[i];
+                    cliente[i] = cliente[j];
+                    cliente[j] = tmp;
+                }
+            }
+        }
+
+    }
+
+    public void ordenarVehiculos(Vehiculo[] Vehiculo) {
+        Vehiculo tmp;
+        for (int i = 0; i < Vehiculo.length - 1; i++) {
+            for (int j = i + 1; j < Vehiculo.length; j++) {
+                if (Vehiculo[i].getMatricula.compareTo(Vehiculo[j].getMatricula())) {
+                    tmp = Vehiculo[i];
+                    Vehiculo[i] = Vehiculo[j];
+                    Vehiculo[j] = tmp;
+                }
+            }
+        }
+    }
+
 }
