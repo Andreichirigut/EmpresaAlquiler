@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+/*LOS METODOS PARA RELLENAR ARRAYS DE VEHICULOS Y CLIENTES DEBEN RELLENAR LAS 50 POSICIONES */
+
 package empresa;
 
 import java.time.LocalDate;
